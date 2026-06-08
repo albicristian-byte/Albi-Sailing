@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albi Sailing - Team Building in Barca a Vela sul Lago di Garda</title>
-    <!-- Importiamo un font moderno e pulito simile a quello usato da Google/Gemini -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -71,8 +70,9 @@
             gap: 12px;
         }
 
+        /* MODIFICATO: LOGO NAVBAR A 90px */
         .nav-logo {
-            height: 70px;
+            height: 90px;
             width: auto;
             object-fit: contain;
             mix-blend-mode: multiply;
@@ -99,7 +99,7 @@
         /* Hero Section */
         .hero {
             min-height: 95vh;
-            padding-top: 160px;
+            padding-top: 170px; /* Bilanciato per il logo a 90px */
             padding-bottom: 60px;
             display: flex;
             flex-direction: column;
@@ -370,8 +370,9 @@
             border-bottom: 1px solid rgba(15, 23, 42, 0.05);
         }
 
+        /* MODIFICATO: LOGO FOOTER A 120px */
         .footer-brand-logo {
-            height: 90px;
+            height: 120px;
             margin-bottom: 16px;
             object-fit: contain;
             mix-blend-mode: multiply;
@@ -423,6 +424,13 @@
             .nav-links {
                 display: none; 
             }
+            /* Adattamento logo per schermi mobile */
+            .nav-logo {
+                height: 70px; 
+            }
+            .hero {
+                padding-top: 130px;
+            }
             .hero h1 {
                 font-size: 38px;
                 letter-spacing: -1px;
@@ -441,7 +449,6 @@
 </head>
 <body>
 
-    <!-- Navigazione -->
     <nav>
         <div class="logo-container">
             <img src="Logo.png" alt="Logo Albi Sailing" class="nav-logo">
@@ -454,7 +461,6 @@
         </ul>
     </nav>
 
-    <!-- Sezione Hero -->
     <header class="hero">
         <div class="hero-badge">Lago di Garda • Team Experience</div>
         <h1>L'evoluzione del tuo Team,<br><span class="gradient-text">spinta dal vento dell'estate.</span></h1>
@@ -462,7 +468,6 @@
         <a href="#contatti" class="btn-primary">Inizia la Rotta</a>
     </header>
 
-    <!-- Perché la Barca (Il Metodo) -->
     <section id="perche">
         <div class="section-header">
             <h2>Il parallelo perfetto</h2>
@@ -493,7 +498,6 @@
         </div>
     </section>
 
-    <!-- Sezione Obiettivi -->
     <section id="obiettivi">
         <div class="objectives-block">
             <div class="objectives-left">
@@ -512,7 +516,6 @@
         </div>
     </section>
 
-    <!-- Sezione Programma -->
     <section id="programma">
         <div class="section-header">
             <h2>L'esperienza della giornata</h2>
@@ -553,7 +556,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contatti">
         <div class="footer-grid">
             <div class="footer-brand">
