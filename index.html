@@ -257,8 +257,17 @@
             align-items: center;
             justify-content: center;
             color: var(--accent-blue);
-            font-weight: 700;
             margin-bottom: 24px;
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .gemini-card h3 {
@@ -313,6 +322,70 @@
             font-weight: bold;
         }
 
+        /* Menu a Tendina e Struttura Programma Avanzata */
+        .dropdown-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .dropdown-select {
+            width: 100%;
+            padding: 16px 48px 16px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            background: #ffffff;
+            border: 2px solid rgba(2, 132, 199, 0.15);
+            border-radius: 100px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-select:hover, .dropdown-select:focus {
+            border-color: var(--accent-blue);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .dropdown-wrapper::after {
+            content: "";
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid var(--text-muted);
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        .program-content {
+            display: none;
+        }
+
+        .program-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .timeline-modern {
             max-width: 800px;
             margin: 0 auto;
@@ -353,10 +426,12 @@
             font-weight: 700;
             color: var(--accent-blue);
             background: rgba(2, 132, 199, 0.06);
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 6px;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .timeline-row h4 {
@@ -590,7 +665,7 @@
 
     <header class="hero">
         <div class="hero-badge">Lago di Garda • Team Experience</div>
-        <h1>L'evoluzione del tuo Team,<br><span class="gradient-text">spinta dal vento dell'estate.</span></h1>
+        <h1>L'evoluzione del tuo Team,<br><span class="gradient-text">spinta dal vento dell'estate</span></h1>
         <p>Trasforma un gruppo di lavoro in un vero equipaggio. Albi Sailing unisce la formazione aziendale avanzata alla libertà e all'energia della barca a vela.</p>
         <a href="#contatti" class="btn-primary">Inizia la Rotta</a>
     </header>
@@ -603,22 +678,40 @@
         
         <div class="grid-cards">
             <div class="gemini-card">
-                <div class="card-icon">01</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4zM10 2l-6 12h6V2zM13 4.5V14h5l-5-9.5z"/>
+                    </svg>
+                </div>
                 <h3>Equipaggio coordinato</h3>
                 <p>Nessun personalismo. A bordo, così come in azienda, la sincronia perfetta tra i reparti è l'unico modo per navigare veloci.</p>
             </div>
             <div class="gemini-card">
-                <div class="card-icon">02</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 2v5M12 17v5M2 12h5M17 12h5M4.93 4.93l3.54 3.54M15.54 15.54l3.54 3.54M4.93 19.07l3.54-3.54M15.54 8.46l3.54-3.54"/>
+                    </svg>
+                </div>
                 <h3>Skipper & Leadership</h3>
                 <p>La guida strategica nei momenti di bonaccia o di tempesta. Allena l'ascolto e la prontezza nel problem solving.</p>
             </div>
             <div class="gemini-card">
-                <div class="card-icon">03</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L9 9l-7 3 7 3 3 7 3-7 7-3-7-3-3-7z"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
                 <h3>Rotta & Obiettivo comune</h3>
                 <p>Impostare le vele significa pianificare. Il traguardo è chiaro, ma la flessibilità per raggiungerlo fa la differenza.</p>
             </div>
             <div class="gemini-card">
-                <div class="card-icon">04</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2 7h15a3 3 0 0 1 0 6H15M2 11h11a3 3 0 0 0 0-6H11M2 15h18a2.5 2.5 0 0 1 0 5h-2"/>
+                    </svg>
+                </div>
                 <h3>Gestione del Vento</h3>
                 <p>Le opportunità e gli imprevisti di mercato. Saper interpretare le raffiche d'estate allena l'autocontrollo sotto stress.</p>
             </div>
@@ -646,39 +739,106 @@
     <section id="programma">
         <div class="section-header">
             <h2>L'esperienza della giornata</h2>
-            <p>Un percorso scandito da ritmi intensi, convivialità estiva e formazione mirata.</p>
+            <p>Un percorso scandito da ritmi intensi, formazione mirata e soluzioni flessibili in base alle tue esigenze.</p>
         </div>
 
-        <div class="timeline-modern">
-            <div class="timeline-row">
-                <span class="time-tag">Ore 10:00</span>
-                <h4>Welcome & Briefing Formativo</h4>
-                <p>Accoglienza del team sul Lago di Garda, allineamento iniziale e focus sugli obiettivi aziendali da testare.</p>
+        <div class="dropdown-container">
+            <div class="dropdown-wrapper">
+                <select id="program-select" class="dropdown-select" onchange="switchProgram()">
+                    <option value="giornata-intera">Giornata Intera</option>
+                    <option value="mezza-giornata">Mezza Giornata</option>
+                    <option value="uscita-notturna">Uscita Notturna</option>
+                </select>
             </div>
-            <div class="timeline-row">
-                <span class="time-tag">Ore 10:30</span>
-                <h4>Addestramento Tecnico a Terra</h4>
-                <p>Gli skipper preparano l'equipaggio spiegando i ruoli, la terminologia di bordo e i protocolli di sicurezza.</p>
+        </div>
+
+        <div id="giornata-intera" class="program-content active">
+            <div class="timeline-modern">
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 1</span>
+                    <h4>Accoglienza e allineamento obiettivi</h4>
+                    <p>Briefing iniziale sul Lago di Garda, allineamento iniziale e focus sulle dinamiche aziendali da testare.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 2</span>
+                    <h4>Preparazione equipaggio a terra e protocolli di sicurezza</h4>
+                    <p>Gli skipper preparano l'equipaggio spiegando i ruoli teorici, la terminologia di bordo e i protocolli fondamentali.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 3</span>
+                    <h4>Uscita al largo con messa in pratica e gestione attiva della barca</h4>
+                    <p>Mollo degli ormeggi. Il team prende il controllo dei comandi, coordinando randa e timone sotto supervisione tecnica.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 4</span>
+                    <h4>Pranzo a terra e momento conviviale</h4>
+                    <p>Sosta per un pranzo rigenerante a terra, ideale per il relax, il networking e la convivialità di squadra.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 5</span>
+                    <h4>Rientro alla base in navigazione e debriefing a terra</h4>
+                    <p>Navigazione di rientro e rielaborazione finale guidata per convertire i comportamenti di bordo in azioni pratiche per l'ufficio.</p>
+                </div>
             </div>
-            <div class="timeline-row">
-                <span class="time-tag">Ore 12:00</span>
-                <h4>Mollo degli ormeggi e Navigazione attiva</h4>
-                <p>Uscita in mare aperto. Il team prende il controllo dei comandi, coordinando randa e timone sotto la supervisione tecnica.</p>
+        </div>
+
+        <div id="mezza-giornata" class="program-content">
+            <div class="timeline-modern">
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 1</span>
+                    <h4>Accoglienza e allineamento obiettivi</h4>
+                    <p>Briefing iniziale sul Lago di Garda, allineamento iniziale e focus sulle dinamiche aziendali da testare.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 2</span>
+                    <h4>Preparazione equipaggio a terra e protocolli di sicurezza</h4>
+                    <p>Gli skipper preparano l'equipaggio spiegando i ruoli teorici, la terminologia di bordo e i protocolli fondamentali.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 3</span>
+                    <h4>Uscita al largo con messa in pratica e gestione attiva della barca</h4>
+                    <p>Mollo degli ormeggi. Il team prende il controllo dei comandi, coordinando randa e timone sotto supervisione tecnica.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 4</span>
+                    <h4>Aperitivo in barca e momento conviviale</h4>
+                    <p>Un brindisi in mezzo al lago cullati dalle onde, perfetto per stimolare l'unione e la coesione del team in chiave relax.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 5</span>
+                    <h4>Rientro alla base in navigazione e debriefing a terra</h4>
+                    <p>Navigazione di rientro e rielaborazione finale guidata per convertire i comportamenti di bordo in azioni pratiche per l'ufficio.</p>
+                </div>
             </div>
-            <div class="timeline-row">
-                <span class="time-tag">Ore 13:30</span>
-                <h4>Pranzo in Versione Summer</h4>
-                <p>Momento di relax, convivialità e networking di squadra a bordo cullati dalle onde del lago.</p>
-            </div>
-            <div class="timeline-row">
-                <span class="time-tag">Ore 14:30</span>
-                <h4>Regata Challenge & Team Sfida</h4>
-                <p>Simulazione competitiva in sicurezza. I team si sfidano su un percorso boe per misurare l'efficacia organizzativa appresa.</p>
-            </div>
-            <div class="timeline-row">
-                <span class="time-tag">Ore 18:00</span>
-                <h4>Rientro e Debriefing Analitico</h4>
-                <p>Rielaborazione guidata dell'esperienza per convertire i comportamenti appresi in barca in azioni pratiche per l'ufficio.</p>
+        </div>
+
+        <div id="uscita-notturna" class="program-content">
+            <div class="timeline-modern">
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 1</span>
+                    <h4>Accoglienza e allineamento obiettivi</h4>
+                    <p>Briefing iniziale sul Lago di Garda, allineamento iniziale e focus sulle dinamiche aziendali da testare.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 2</span>
+                    <h4>Preparazione equipaggio a terra e protocolli di sicurezza</h4>
+                    <p>Gli skipper preparano l'equipaggio spiegando i ruoli teorici, la terminologia di bordo e i protocolli fondamentali.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 3</span>
+                    <h4>Uscita al largo con messa in pratica e gestione attiva della barca</h4>
+                    <p>Mollo degli ormeggi. Il team prende il controllo dei comandi, coordinando randa e timone sotto supervisione tecnica.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 4</span>
+                    <h4>Cena a terra e momento conviviale</h4>
+                    <p>Una cena esclusiva a terra per condividere i traguardi vissuti e consolidare lo spirito di corpo di fronte al lago.</p>
+                </div>
+                <div class="timeline-row">
+                    <span class="time-tag">Fase 5</span>
+                    <h4>Rientro in notturna alla base in navigazione e debriefing a terra</h4>
+                    <p>L'emozionante navigazione sotto le stelle per rientrare alla base, conclusa con il debriefing formativo finale.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -724,6 +884,24 @@
                 document.querySelector('.nav-links').classList.remove('active');
             });
         });
+
+        // Gestione cambio programma tramite menu a tendina
+        function switchProgram() {
+            const select = document.getElementById('program-select');
+            const selectedValue = select.value;
+            
+            // Nascondi tutti i contenuti dei programmi
+            const contents = document.querySelectorAll('.program-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Mostra quello selezionato
+            const activeContent = document.getElementById(selectedValue);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>
