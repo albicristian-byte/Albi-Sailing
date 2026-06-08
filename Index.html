@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albi Sailing - Team Building in Barca a Vela sul Lago di Garda</title>
+    <!-- Importiamo un font moderno e pulito simile a quello usato da Google/Gemini -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Design System ispirato a Gemini + Colori del Mare e dell'Estate */
+        :root {
+            --bg-principal: #f4f7fa;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            
+            /* Il tipico gradiente Gemini reinterpretato con le sfumature del mare d'estate */
+            --gemini-sea-gradient: linear-gradient(135deg, #1a3a5f 0%, #0284c7 40%, #06b6d4 70%, #6366f1 100%);
+            --accent-cyan: #06b6d4;
+            --accent-blue: #0284c7;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --card-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.08);
+            --hover-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar in stile Glassmorphism */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 12px 32px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 95vh;
+            padding-top: 160px;
+            padding-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+        }
+
+        .hero-badge {
+            background: rgba(2, 132, 199, 0.08);
+            color: var(--accent-blue);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(2, 132, 199, 0.15);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.15;
+            max-width: 900px;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+            color: #0f172a;
+        }
+
+        .gradient-text {
+            background: var(--gemini-sea-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gemini-sea-gradient);
+            color: #ffffff;
+            padding: 16px 36px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 100px;
+            font-size: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
+        }
+
+        section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .gemini-card {
+            background: #ffffff;
+            padding: 40px 32px;
+            border-radius: 24px;
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gemini-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gemini-sea-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gemini-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .gemini-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(6, 182, 212, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .gemini-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .gemini-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .objectives-block {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 50px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(15, 23, 42, 0.02);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            align-items: center;
+        }
+
+        .objectives-left h3 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .objectives-list {
+            list-style: none;
+        }
+
+        .objectives-list li {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .objectives-list li::before {
+            content: "✦"; 
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .timeline-modern {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline-modern::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-cyan), transparent);
+        }
+
+        .timeline-row {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-row::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid var(--accent-blue);
+            box-shadow: 0 0 10px rgba(2, 132, 199, 0.2);
+        }
+
+        .time-tag {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            background: rgba(2, 132, 199, 0.06);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .timeline-row h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .timeline-row p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        footer {
+            background: #ffffff;
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
+            padding: 80px 24px 40px 24px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .footer-brand-logo {
+            height: 60px;
+            margin-bottom: 16px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-links h5 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links p, .footer-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 12px;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .copyright-area {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 24px;
+            }
+            .nav-links {
+                display: none; 
+            }
+            .hero h1 {
+                font-size: 38px;
+                letter-spacing: -1px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .objectives-block {
+                padding: 30px 20px;
+            }
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigazione -->
+    <nav>
+        <div class="logo-container">
+            <img src="Logo.JPG" alt="Logo Albi Sailing" class="nav-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#perche">Il Metodo</a></li>
+            <li><a href="#obiettivi">Obiettivi</a></li>
+            <li><a href="#programma">Programma</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sezione Hero -->
+    <header class="hero">
+        <div class="hero-badge">Lago di Garda • Team Experience</div>
+        <h1>L'evoluzione del tuo Team,<br><span class="gradient-text">spinta dal vento dell'estate.</span></h1>
+        <p>Trasforma un gruppo di lavoro in un vero equipaggio. Albi Sailing unisce la formazione aziendale avanzata alla libertà e all'energia della barca a vela.</p>
+        <a href="#contatti" class="btn-primary">Inizia la Rotta</a>
+    </header>
+
+    <!-- Perché la Barca (Il Metodo) -->
+    <section id="perche">
+        <div class="section-header">
+            <h2>Il parallelo perfetto</h2>
+            <p>La barca a vela è il simulatore naturale più potente per le dinamiche di gruppo del tuo business.</p>
+        </div>
+        
+        <div class="grid-cards">
+            <div class="gemini-card">
+                <div class="card-icon">01</div>
+                <h3>Equipaggio coordinato</h3>
+                <p>Nessun personalismo. A bordo, così come in azienda, la sincronia perfetta tra i reparti è l'unico modo per navigare veloci.</p>
+            </div>
+            <div class="gemini-card">
+                <div class="card-icon">02</div>
+                <h3>Skipper & Leadership</h3>
+                <p>La guida strategica nei momenti di bonaccia o di tempesta. Allena l'ascolto e la prontezza nel problem solving.</p>
+            </div>
+            <div class="gemini-card">
+                <div class="card-icon">03</div>
+                <h3>Rotta & Obiettivo comune</h3>
+                <p>Impostare le vele significa pianificare. Il traguardo è chiaro, ma la flessibilità per raggiungerlo fa la differenza.</p>
+            </div>
+            <div class="gemini-card">
+                <div class="card-icon">04</div>
+                <h3>Gestione del Vento</h3>
+                <p>Le opportunità e gli imprevisti di mercato. Saper interpretare le raffiche d'estate allena l'autocontrollo sotto stress.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Obiettivi -->
+    <section id="obiettivi">
+        <div class="objectives-block">
+            <div class="objectives-left">
+                <h3>Cosa <span class="gradient-text">generiamo</span> a bordo</h3>
+                <p style="color: var(--text-muted); font-size: 15px;">Un'esperienza immersiva pensata per abbattere le barriere comunicative e stimolare il potenziale latente del team.</p>
+            </div>
+            <div>
+                <ul class="objectives-list">
+                    <li>Fiducia reciproca assoluta tra i colleghi.</li>
+                    <li>Sviluppare abilità organizzative in contesti mutevoli.</li>
+                    <li>Rafforzare lo spirito di corpo divertendosi insieme.</li>
+                    <li>Ottimizzare i flussi di comunicazione sotto stress.</li>
+                    <li>Riconoscere l'errore come opportunità di correzione di rotta.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Programma -->
+    <section id="programma">
+        <div class="section-header">
+            <h2>L'esperienza della giornata</h2>
+            <p>Un percorso scandito da ritmi intensi, convivialità estiva e formazione mirata.</p>
+        </div>
+
+        <div class="timeline-modern">
+            <div class="timeline-row">
+                <span class="time-tag">Ore 10:00</span>
+                <h4>Welcome & Briefing Formativo</h4>
+                <p>Accoglienza del team sul Lago di Garda, allineamento iniziale e focus sugli obiettivi aziendali da testare.</p>
+            </div>
+            <div class="timeline-row">
+                <span class="time-tag">Ore 10:30</span>
+                <h4>Addestramento Tecnico a Terra</h4>
+                <p>Gli skipper preparano l'equipaggio spiegando i ruoli, la terminologia di bordo e i protocolli di sicurezza.</p>
+            </div>
+            <div class="timeline-row">
+                <span class="time-tag">Ore 12:00</span>
+                <h4>Mollo degli ormeggi e Navigazione attiva</h4>
+                <p>Uscita in mare aperto. Il team prende il controllo dei comandi, coordinando randa e timone sotto la supervisione tecnica.</p>
+            </div>
+            <div class="timeline-row">
+                <span class="time-tag">Ore 13:30</span>
+                <h4>Pranzo in Versione Summer</h4>
+                <p>Momento di relax, convivialità e networking di squadra a bordo cullati dalle onde del lago.</p>
+            </div>
+            <div class="timeline-row">
+                <span class="time-tag">Ore 14:30</span>
+                <h4>Regata Challenge & Team Sfida</h4>
+                <p>Simulazione competitiva in sicurezza. I team si sfidano su un percorso boe per misurare l'efficacia organizzativa appresa.</p>
+            </div>
+            <div class="timeline-row">
+                <span class="time-tag">Ore 18:00</span>
+                <h4>Rientro e Debriefing Analitico</h4>
+                <p>Rielaborazione guidata dell'esperienza per convertire i comportamenti appresi in barca in azioni pratiche per l'ufficio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contatti">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="Logo.JPG" alt="Logo Albi Sailing" class="footer-brand-logo">
+                <p>Progetti esclusivi di Team Building e formazione aziendale esperienziale a vela sul Lago di Garda.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Contatti Diretti</h5>
+                <p><strong>Skipper Formatore:</strong> Cristian Albi</p>
+                <p><strong>Telefono:</strong> <a href="tel:+393479745871">+39 347 974 5871</a></p>
+                <p><strong>Email:</strong> <a href="mailto:albisailing@gmail.com">albisailing@gmail.com</a></p>
+                <p>
+                    <a href="https://wa.me/393479745871" target="_blank" style="display: inline-block; background: #25D366; color: #fff; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 13px; margin-top: 5px;">
+                        Contattaci su WhatsApp
+                    </a>
+                </p>
+            </div>
+            <div class="footer-links">
+                <h5>Social Media</h5>
+                <a href="https://www.instagram.com/albi_sailing?utm_source=qr" target="_blank">Instagram (@albi_sailing)</a>
+                <a href="https://www.facebook.com/share/1D9bhRPxNo/?mibextid=wwXIfr" target="_blank">Facebook</a>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <p>&copy; 2026 Albi Sailing Experience. Sviluppato in Stile Minimal ed Estivo.</p>
+            <p>Lago di Garda, Italia</p>
+        </div>
+    </footer>
+
+</body>
+</html>
