@@ -43,6 +43,23 @@
             overflow-x: hidden;
         }
 
+        /* Sfondo filigrana fisso per Desktop (Posizionato in basso a destra) */
+        body::before {
+            content: '';
+            position: fixed;
+            bottom: 8%;
+            right: 4%;
+            width: 480px;
+            height: 480px;
+            background-image: url('Barca senza sfondo.webp');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.12; /* Trasparenza per non disturbare la lettura su desktop */
+            z-index: -1;
+            pointer-events: none;
+        }
+
         /* Navbar in stile Glassmorphism */
         nav {
             position: fixed;
@@ -241,7 +258,7 @@
             margin: 0 auto;
         }
 
-        /* Stile per i testi aggiuntivi introduttivi */
+        /* Stile per i testi aggiuntivi */
         .section-intro-text {
             text-align: center;
             max-width: 800px;
@@ -315,7 +332,6 @@
             margin-bottom: 24px;
         }
 
-        /* Animazioni dinamiche per le icone */
         .card-icon svg {
             width: 24px;
             height: 24px;
@@ -445,7 +461,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Contenuti dei programmi */
         .program-team-content, .program-relax-content {
             display: none;
         }
@@ -583,7 +598,20 @@
             gap: 16px;
         }
 
+        /* MEDIA QUERY: OTTIMIZZAZIONE SMARTPHONE */
         @media (max-width: 768px) {
+            
+            /* Sfondo fisso ottimizzato per Mobile: centrato in orizzontale sotto i testi */
+            body::before {
+                width: 300px;
+                height: 300px;
+                bottom: 8%;       /* Posizionato nella fascia medio-bassa dello schermo dello smartphone */
+                left: 50%;        /* Centra l'elemento rispetto al bordo sinistro */
+                right: auto;      /* Resetta il posizionamento desktop a destra */
+                transform: translateX(-50%); /* Centra l'immagine perfettamente sull'asse orizzontale */
+                opacity: 0.08;    /* Opacità ridotta all'8% per una leggibilità del testo mobile impeccabile */
+            }
+
             nav {
                 padding: 12px 20px;
             }
@@ -915,7 +943,7 @@
                     </svg>
                 </div>
                 <h3>Skipper & Leadership</h3>
-                <p>La guida strategica nei moments di bonaccia o di tempesta. Allena l'ascolto e la prontezza nel problem solving.</p>
+                <p>La guida strategica nei momenti di bonaccia o di tempesta. Allena l'ascolto e la prontezza nel problem solving.</p>
             </div>
             <div class="gemini-card">
                 <div class="card-icon">
@@ -950,8 +978,9 @@
                     <li>Fiducia reciproca assoluta tra i colleghi.</li>
                     <li>Sviluppare abilità organizzative in contesti mutevoli.</li>
                     <li>Rafforzare lo spirito di corpo divertendosi insieme.</li>
-                    <li>Ottimizzare i flussi di comunicazione sotto stress.</li>
-                    <li>Riconoscere l'errore come opportunità di correzione di rotta.</li>
+                    <li>Consolidare e rafforzare i rapporti tra i componenti del team.</li>
+                    <li>Creare affiatamento e piacere di stare insieme.</li>
+		    <li>Riconoscere l'errore come opportunità di correzione di rotta.</li>
                 </ul>
             </div>
         </div>
@@ -998,7 +1027,7 @@
                 <div class="timeline-row">
                     <span class="time-tag">15:30</span>
                     <h4>Rientro alla base in navigazione e debriefing</h4>
-                    <p>Navigazione di rientro e rielaborazione finale guidata per convertire i comportamenti di bordo in azioni pratiche per l'ufficio.</p>
+                    <p>Navigazione di rientro e rielaborazione finale guidata mirata a focalizzare i punti di forza emersi durante le manovre.</p>
                 </div>
             </div>
         </div>
