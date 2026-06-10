@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Albi Sailing - Esperienze in Barca a Vela sul Lago di Garda</title>
- <!-- ✅ OPEN GRAPH -->
-    <meta property="og:title" content="Albi Sailing Experience">
+ <meta property="og:title" content="Albi Sailing Experience">
     <meta property="og:description" content="Esperienze in barca a vela sul Lago di Garda: relax, natura e team building in un'esperienza esclusiva.">
     <meta property="og:image" content="https://albicristian-byte.github.io/Albi-Sailing/preview.jpg">
     <meta property="og:url" content="https://albicristian-byte.github.io/Albi-Sailing/">
@@ -135,7 +134,7 @@
             border-radius: 2px;
         }
 
-        /* Hero Section */
+        /* Hero Section Ottimizzata con Immagine Emozionale e Parallasse */
         .hero {
             min-height: 95vh;
             padding-top: 150px;
@@ -148,13 +147,14 @@
             align-items: center;
             text-align: center;
             position: relative;
-            background: radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 10% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(2, 132, 199, 0.55) 100%), url('hero.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
         }
 
         .hero-badge {
-            background: rgba(2, 132, 199, 0.08);
-            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
             padding: 8px 16px;
             border-radius: 100px;
             font-size: 13px;
@@ -162,7 +162,9 @@
             margin-bottom: 24px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            border: 1px solid rgba(2, 132, 199, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         .hero h1 {
@@ -172,21 +174,22 @@
             max-width: 900px;
             margin-bottom: 24px;
             letter-spacing: -1.5px;
-            color: #0f172a;
+            color: #ffffff;
         }
 
         .gradient-text {
-            background: var(--gemini-sea-gradient);
+            background: linear-gradient(135deg, #38bdf8 0%, #22d3ee 50%, #818cf8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             font-size: 18px;
-            color: var(--text-muted);
+            color: #e2e8f0;
             max-width: 650px;
             margin-bottom: 40px;
             font-weight: 400;
+            text-shadow: 0 2px 4px rgba(15, 23, 42, 0.2);
         }
 
         .hero-buttons {
@@ -303,6 +306,8 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .gemini-card::before {
@@ -326,6 +331,28 @@
             opacity: 1;
         }
 
+        /* Copertine fotografiche per le card */
+        .card-photo-wrapper {
+            width: calc(100% + 64px);
+            margin-left: -32px;
+            margin-top: -40px;
+            height: 200px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .card-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gemini-card:hover .card-photo-wrapper img {
+            transform: scale(1.06);
+        }
+
         .card-icon {
             width: 48px;
             height: 48px;
@@ -336,6 +363,16 @@
             justify-content: center;
             color: var(--accent-blue);
             margin-bottom: 24px;
+        }
+
+        /* Se la card ha la foto, l'icona si sovrappone elegantemente in stile badge floating */
+        .card-photo-wrapper + .card-icon {
+            position: absolute;
+            top: 140px;
+            left: 24px;
+            z-index: 2;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
         }
 
         .card-icon svg {
@@ -415,6 +452,22 @@
             content: "✦"; 
             color: var(--accent-cyan);
             font-weight: bold;
+        }
+
+        .objectives-photo-container {
+            width: 100%;
+            height: 100%;
+            min-height: 240px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .objectives-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* Menu a Tendina e Struttura Programmi */
@@ -669,6 +722,7 @@
                 min-height: auto;
                 padding-top: 140px;
                 padding-bottom: 40px;
+                background-attachment: scroll;
             }
 
             .hero h1 {
@@ -707,6 +761,10 @@
             .section-intro-text, .section-quote-text {
                 margin: -15px auto 30px auto;
                 font-size: 15px;
+            }
+
+            .card-photo-wrapper {
+                height: 160px;
             }
 
             .objectives-block {
@@ -795,6 +853,9 @@
         
         <div class="grid-cards">
             <div class="gemini-card">
+                <div class="card-photo-wrapper">
+                    <img src="relax.jpg" alt="Aperitivo al tramonto Albi Sailing">
+                </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="5"/>
@@ -805,6 +866,9 @@
                 <p>Goditi il tramonto dorato dal centro del lago, sorseggiando un calice di vino locale cullato dal dolce movimento delle onde estive.</p>
             </div>
             <div class="gemini-card">
+                <div class="card-photo-wrapper">
+                    <img src="tramonto.jpg" alt="Crociera relax e bagno Lago di Garda">
+                </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 22a7 7 0 0 0 7-7h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 7 7zM12 2v13M12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
@@ -814,6 +878,9 @@
                 <p>Navigazione lenta alla scoperta delle baie più nascoste e suggestive del Garda, con soste dedicate a un bagno rigenerante in acque cristalline.</p>
             </div>
             <div class="gemini-card">
+                <div class="card-photo-wrapper">
+                    <img src="disintossicazione digitale.jpg" alt="Disintossicazione digitale Albi Sailing">
+                </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 3v10.55A4 4 0 1 0 14 17V7h6V3h-6z"/>
@@ -933,6 +1000,9 @@
         
         <div class="grid-cards">
             <div class="gemini-card">
+                <div class="card-photo-wrapper">
+                    <img src="ecquipaggio coordinato e affiatato.jpg" alt="Equipaggio coordinato e affiatato Albi Sailing">
+                </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4zM10 2l-6 12h6V2zM13 4.5V14h5l-5-9.5z"/>
@@ -942,6 +1012,9 @@
                 <p>Nessun personalismo. A bordo, così come in azienda, la sincronia perfetta tra i reparti è l'unico modo per navigare veloci.</p>
             </div>
             <div class="gemini-card">
+                <div class="card-photo-wrapper">
+                    <img src="Skipper & leadership.jpg" alt="Skipper e Leadership Aziendale">
+                </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="5"/>
@@ -952,6 +1025,9 @@
                 <p>La guida strategica nei momenti di bonaccia o di tempesta. Allena l'ascolto e la prontezza nel problem solving.</p>
             </div>
             <div class="gemini-card">
+                <div class="card-photo-wrapper">
+                    <img src="rotta e obiettivo comune.jpg" alt="Rotta e Obiettivo Comune Team">
+                </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 2L9 9l-7 3 7 3 3 7 3-7 7-3-7-3-3-7z"/>
@@ -962,6 +1038,9 @@
                 <p>Impostare le vele significa pianificare. Il traguardo è chiaro, ma la flessibilità per raggiungerlo fa la differenza.</p>
             </div>
             <div class="gemini-card">
+                <div class="card-photo-wrapper">
+                    <img src="team.jpg" alt="Gestione del vento e del mercato">
+                </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M2 7h15a3 3 0 0 1 0 6H15M2 11h11a3 3 0 0 0 0-6H11M2 15h18a2.5 2.5 0 0 1 0 5h-2"/>
@@ -977,7 +1056,10 @@
         <div class="objectives-block">
             <div class="objectives-left">
                 <h3>Cosa <span class="gradient-text">generiamo</span> a bordo</h3>
-                <p style="color: var(--text-muted); font-size: 15px;">Un'esperienza immersiva pensata per abbattere le barriere comunicative e stimolare il potenziale latente del team.</p>
+                <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 24px;">Un'esperienza immersiva pensata per abbattere le barriere comunicative e stimolare il potenziale latente del team.</p>
+                <div class="objectives-photo-container">
+                    <img src="dettaglio.jpg" alt="Dettaglio Vela Albi Sailing Formazione">
+                </div>
             </div>
             <div>
                 <ul class="objectives-list">
