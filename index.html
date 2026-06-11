@@ -2,17 +2,23 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albi Sailing - Esperienze in Barca a Vela sul Lago di Garda</title>
+    <meta name="description" content="Esperienze in barca a vela sul Lago di Garda: relax, team building e formazione aziendale esperienziale con skipper. Uscite su misura tra natura e benessere.">
+    <link rel="canonical" href="https://albicristian-byte.github.io/Albi-Sailing/">
+    <link rel="icon" type="image/png" href="Logo.png">
     <meta property="og:title" content="Albi Sailing Experience">
     <meta property="og:description" content="Esperienze in barca a vela sul Lago di Garda: relax, natura e team building in un'esperienza esclusiva.">
     <meta property="og:image" content="https://albicristian-byte.github.io/Albi-Sailing/preview.jpg">
     <meta property="og:url" content="https://albicristian-byte.github.io/Albi-Sailing/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://albicristian-byte.github.io/Albi-Sailing/preview.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Design System ispirato a Gemini + Colori del Mare e dell'Estate */
         :root {
@@ -37,6 +43,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 120px;
         }
 
         body {
@@ -44,6 +51,18 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Selezione testo in brand */
+        ::selection {
+            background: var(--accent-blue);
+            color: #ffffff;
+            text-shadow: none;
+        }
+        ::-moz-selection {
+            background: var(--accent-blue);
+            color: #ffffff;
+            text-shadow: none;
         }
 
         body::before {
@@ -119,6 +138,9 @@
             gap: 5px;
             cursor: pointer;
             z-index: 1001;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         .hamburger span {
@@ -174,6 +196,7 @@
         .gradient-text {
             background: linear-gradient(135deg, #38bdf8 0%, #22d3ee 50%, #818cf8 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -476,15 +499,17 @@
             font-weight: 500;
             color: var(--text-muted);
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            position: relative;
+            padding-left: 22px;
         }
 
         .objectives-list li::before {
-            content: "✦"; 
+            content: "✦";
             color: var(--accent-cyan);
             font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
 
         .dropdown-container {
@@ -492,14 +517,15 @@
             margin-bottom: 50px;
         }
 
-        .dropdown-wrapper {
+        .custom-select {
             position: relative;
             display: inline-block;
             width: 100%;
             max-width: 380px;
+            text-align: left;
         }
 
-        .dropdown-select {
+        .custom-select-trigger {
             width: 100%;
             padding: 16px 48px 16px 24px;
             font-size: 16px;
@@ -509,14 +535,30 @@
             border: 2px solid rgba(2, 132, 199, 0.15);
             border-radius: 100px;
             cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-            outline: none;
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            font-family: inherit;
         }
 
-        .dropdown-wrapper::after {
+        .custom-select-trigger:hover {
+            border-color: rgba(2, 132, 199, 0.45);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .custom-select-trigger:focus-visible {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18), var(--card-shadow);
+        }
+
+        .custom-select.open .custom-select-trigger {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18), var(--card-shadow);
+        }
+
+        .custom-select-trigger::after {
             content: "";
             position: absolute;
             right: 24px;
@@ -527,7 +569,56 @@
             border-left: 6px solid transparent;
             border-right: 6px solid transparent;
             border-top: 6px solid var(--text-muted);
-            pointer-events: none;
+            transition: transform 0.3s ease, border-top-color 0.3s ease;
+        }
+
+        .custom-select.open .custom-select-trigger::after {
+            transform: translateY(-50%) rotate(180deg);
+            border-top-color: var(--accent-blue);
+        }
+
+        .custom-select-options {
+            list-style: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid rgba(2, 132, 199, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.25);
+            padding: 8px;
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+        }
+
+        .custom-select.open .custom-select-options {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .custom-select-options li {
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .custom-select-options li:hover {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-blue);
+        }
+
+        .custom-select-options li.selected {
+            background: var(--gemini-sea-gradient);
+            color: #ffffff;
         }
 
         .program-team-content, .program-relax-content {
@@ -701,6 +792,7 @@
                 transform: translateY(0);
             }
 
+            .hero { background-attachment: scroll; }
             .hero h1 { font-size: 36px; }
             .hero-buttons { flex-direction: column; }
 
@@ -719,12 +811,12 @@
         <div class="logo-container">
             <img src="Logo.png" alt="Logo Albi Sailing" class="nav-logo">
         </div>
-        
-        <div class="hamburger" onclick="toggleMenu()">
+
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
 
         <ul class="nav-links">
             <li><a href="#relaxing">Relaxing Sailing</a></li>
@@ -739,7 +831,7 @@
         <div class="hero-badge">Lago di Garda • Sailing Experiences</div>
         <h1>Scegli la tua rotta sul lago di Garda,<br><span class="gradient-text">segui il vento e lasciati guidare dalle emozioni</span></h1>
         <p>Concediti un'esperienza esclusiva di assoluto benessere e disconnessione tra le onde o trasforma il tuo gruppo di lavoro in un vero equipaggio.</p>
-        
+
         <div class="hero-buttons">
             <a href="#relaxing" class="btn-primary">Relaxing Sailing</a>
             <a href="#perche" class="btn-secondary">Team Building</a>
@@ -755,29 +847,29 @@
         <p class="section-quote-text">
             “Mollate gli ormeggi. Lasciate i porti sicuri. Catturate il vento nelle vostre vele. Esplorate. Sognate. Scoprite.” <br>— Mark Twain —
         </p>
-        
+
         <div class="grid-cards">
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="aperitivo al tramonto.jpg" alt="Aperitivo e relax Albi Sailing">
+                    <img src="aperitivo al tramonto.jpg" alt="Aperitivo e relax Albi Sailing" loading="lazy">
                 </div>
-                
+
                 <h3>Aperitivo e relax</h3>
                 <p>Goditi il tramonto dorato dal centro del lago, sorseggiando un calice di vino locale cullato dal dolce movimento delle onde estive.</p>
             </div>
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="tramonto.jpg" alt="Crociera relax e bagno Lago di Garda">
+                    <img src="tramonto.jpg" alt="Crociera relax e bagno Lago di Garda" loading="lazy">
                 </div>
-                
+
                 <h3>Crociera relax e bagno</h3>
                 <p>Navigazione lenta alla scoperta delle baie più nascoste e suggestive del Garda, con soste dedicate a un bagno rigenerante in acque cristalline.</p>
             </div>
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="disintossicazione digitale2.jpg" alt="Disintossicazione digitale Albi Sailing">
+                    <img src="disintossicazione digitale2.jpg" alt="Disintossicazione digitale Albi Sailing" loading="lazy">
                 </div>
-                
+
                 <h3>Disintossicazione digitale</h3>
                 <p>Allontana lo stress quotidiano e spegni le notifiche. Respira l'aria del lago e ritrova il tuo equilibrio interno a contatto profondo con la natura.</p>
             </div>
@@ -795,12 +887,15 @@
         </p>
 
         <div class="dropdown-container">
-            <div class="dropdown-wrapper">
-                <select id="program-relax-select" class="dropdown-select" onchange="switchProgramRelax()">
-                    <option value="relax-sunset">Aperitivo e Relax (Pomeriggio)</option>
-                    <option value="relax-slow-cruise">Slow Cruise (Giornata Intera)</option>
-                    <option value="relax-serale">Uscita Serale (Sotto le stelle)</option>
-                </select>
+            <div class="custom-select" data-content-class="program-relax-content">
+                <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Scegli un programma di Relaxing Sailing">
+                    <span class="custom-select-label">Aperitivo e Relax (Pomeriggio)</span>
+                </button>
+                <ul class="custom-select-options" role="listbox">
+                    <li role="option" data-value="relax-sunset" class="selected" aria-selected="true">Aperitivo e Relax (Pomeriggio)</li>
+                    <li role="option" data-value="relax-slow-cruise" aria-selected="false">Slow Cruise (Giornata Intera)</li>
+                    <li role="option" data-value="relax-serale" aria-selected="false">Uscita Serale (Sotto le stelle)</li>
+                </ul>
             </div>
         </div>
 
@@ -844,7 +939,7 @@
                 <div class="timeline-row">
                     <span class="time-tag">13:00</span>
                     <h4>Pranzo in riva al lago</h4>
-                    <p>Sosta ormeggiati nei pressi di un borgo caratteristico per un pranzo economico in un restaurante convenzionato o light lunch a bordo.</p>
+                    <p>Sosta ormeggiati nei pressi di un borgo caratteristico per un pranzo economico in un ristorante convenzionato o light lunch a bordo.</p>
                 </div>
                 <div class="timeline-row">
                     <span class="time-tag">15:00</span>
@@ -889,37 +984,37 @@
         <p class="section-quote-text">
             “Se volete che le persone vedano le cose in un’altra maniera, mettetele in un ambiente dove non sono mai state” <br>— E. Hemingway —
         </p>
-        
+
         <div class="grid-cards">
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="ecquipaggio coordinato e affiatato.jpg" alt="Equipaggio coordinato e affiatato Albi Sailing">
+                    <img src="ecquipaggio coordinato e affiatato.jpg" alt="Equipaggio coordinato e affiatato Albi Sailing" loading="lazy">
                 </div>
-                
+
                 <h3>Equipaggio coordinato e affiatato</h3>
                 <p>Nessun personalismo. A bordo, così come in azienda, la sincronia perfetta tra i reparti è l'unico modo per navigare veloci.</p>
             </div>
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="skipper.jpg" alt="Skipper e Leadership Aziendale">
+                    <img src="skipper.jpg" alt="Skipper e Leadership Aziendale" loading="lazy">
                 </div>
-                
+
                 <h3>Skipper e Leadership</h3>
                 <p>La guida strategica nei momenti di bonaccia o di tempesta. Allena l'ascolto e la prontezza nel problem solving.</p>
             </div>
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="rotta e obiettivo comune.jpg" alt="Rotta e Obiettivo Comune Team">
+                    <img src="rotta e obiettivo comune.jpg" alt="Rotta e Obiettivo Comune Team" loading="lazy">
                 </div>
-                
+
                 <h3>Rotta e Obiettivo comune</h3>
                 <p>Impostare le vele significa pianificare. Il traguardo è chiaro, ma la flessibilità per raggiungerlo fa la differenza.</p>
             </div>
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="gestione del vento.jpg" alt="Gestione del vento e del mercato">
+                    <img src="gestione del vento.jpg" alt="Gestione del vento e del mercato" loading="lazy">
                 </div>
-                
+
                 <h3>Gestione del Vento</h3>
                 <p>Le opportunità e gli imprevisti di mercato. Saper interpretare le raffiche d'estate allena l'autocontrollo sotto stress.</p>
             </div>
@@ -930,14 +1025,14 @@
         <div class="objectives-block">
             <div class="objectives-left">
                 <div class="objectives-photo-container">
-                    <img src="dettaglio.jpg" alt="Dettaglio Vela Albi Sailing Formazione">
+                    <img src="dettaglio.jpg" alt="Dettaglio Vela Albi Sailing Formazione" loading="lazy">
                 </div>
             </div>
 
             <div class="objectives-right">
                 <h3>Perché la <span class="gradient-text">barca a vela</span></h3>
                 <span class="objectives-subtitle">Analogie con la vita aziendale ed obiettivi del Team Building</span>
-                
+
                 <span class="list-section-title">Le analogie aziendali:</span>
                 <ul class="objectives-list">
                     <li><strong>Equipaggio</strong> come Team Aziendale</li>
@@ -966,17 +1061,19 @@
         </div>
 
         <div class="dropdown-container">
-            <div class="dropdown-wrapper">
-                <select id="program-team-select" class="dropdown-select" onchange="switchProgramTeam()">
-                    <option value="team-giornata-intera">Giornata Intera</option>
-                    <option value="team-mezza-giornata">Mezza Giornata</option>
-                </select>
+            <div class="custom-select" data-content-class="program-team-content">
+                <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Scegli un programma di Team Building">
+                    <span class="custom-select-label">Giornata Intera</span>
+                </button>
+                <ul class="custom-select-options" role="listbox">
+                    <li role="option" data-value="team-giornata-intera" class="selected" aria-selected="true">Giornata Intera</li>
+                    <li role="option" data-value="team-mezza-giornata" aria-selected="false">Mezza Giornata</li>
+                </ul>
             </div>
         </div>
 
         <div id="team-giornata-intera" class="program-team-content active">
             <div class="timeline-modern">
-                <div class="timeline-modern::before"></div>
                 <div class="timeline-row">
                     <span class="time-tag">09:30</span>
                     <h4>Accoglienza e allineamento obiettivi</h4>
@@ -1034,7 +1131,7 @@
     <footer id="contatti">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="Logo.png" alt="Logo Albi Sailing" class="footer-brand-logo">
+                <img src="Logo.png" alt="Logo Albi Sailing" class="footer-brand-logo" loading="lazy">
                 <p>Progetti esclusivi di Team Building, formazione aziendale esperienziale ed uscite relax a vela sul Lago di Garda.</p>
             </div>
             <div class="footer-links">
@@ -1043,15 +1140,15 @@
                 <p><strong>Telefono:</strong> <a href="tel:+393479745871">+39 347 974 5871</a></p>
                 <p><strong>Email:</strong> <a href="mailto:albisailing@gmail.com">albisailing@gmail.com</a></p>
                 <p>
-                    <a href="https://wa.me/393479745871" target="_blank" style="display: inline-block; background: #25D366; color: #fff; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 13px; margin-top: 5px;">
+                    <a href="https://wa.me/393479745871" target="_blank" rel="noopener" style="display: inline-block; background: #25D366; color: #fff; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 13px; margin-top: 5px;">
                         Contattaci su WhatsApp
                     </a>
                 </p>
             </div>
             <div class="footer-links">
                 <h5>Social Media</h5>
-                <a href="https://www.instagram.com/albi_sailing?utm_source=qr" target="_blank">Instagram (@albi_sailing)</a>
-                <a href="https://www.facebook.com/share/1D9bhRPxNo/?mibextid=wwXIfr" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/albi_sailing?utm_source=qr" target="_blank" rel="noopener">Instagram (@albi_sailing)</a>
+                <a href="https://www.facebook.com/share/1D9bhRPxNo/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
             </div>
         </div>
         <div class="copyright-area">
@@ -1063,46 +1160,67 @@
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.toggle('active');
+            const btn = document.querySelector('.hamburger');
+            if (btn) btn.setAttribute('aria-expanded', isOpen);
         }
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.nav-links').classList.remove('active');
+                const btn = document.querySelector('.hamburger');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // Gestione cambio programma per la sezione TEAM BUILDING
-        function switchProgramTeam() {
-            const select = document.getElementById('program-team-select');
-            const selectedValue = select.value;
-            
-            const contents = document.querySelectorAll('.program-team-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
+        // Dropdown custom in brand (sostituiscono i <select> nativi del sistema operativo)
+        function closeAllSelects(except) {
+            document.querySelectorAll('.custom-select.open').forEach(function (s) {
+                if (s === except) return;
+                s.classList.remove('open');
+                s.querySelector('.custom-select-trigger').setAttribute('aria-expanded', 'false');
             });
-            
-            const activeContent = document.getElementById(selectedValue);
-            if (activeContent) {
-                activeContent.classList.add('active');
-            }
         }
 
-        // Gestione cambio programma per la sezione RELAXING SAILING
-        function switchProgramRelax() {
-            const select = document.getElementById('program-relax-select');
-            const selectedValue = select.value;
-            
-            const contents = document.querySelectorAll('.program-relax-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
+        document.querySelectorAll('.custom-select').forEach(function (select) {
+            const trigger = select.querySelector('.custom-select-trigger');
+            const label = select.querySelector('.custom-select-label');
+            const options = select.querySelectorAll('.custom-select-options li');
+            const contentClass = select.dataset.contentClass;
+
+            trigger.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const willOpen = !select.classList.contains('open');
+                closeAllSelects(select);
+                select.classList.toggle('open', willOpen);
+                trigger.setAttribute('aria-expanded', willOpen);
             });
-            
-            const activeContent = document.getElementById(selectedValue);
-            if (activeContent) {
-                activeContent.classList.add('active');
-            }
-        }
+
+            options.forEach(function (opt) {
+                opt.addEventListener('click', function () {
+                    options.forEach(function (o) {
+                        o.classList.remove('selected');
+                        o.setAttribute('aria-selected', 'false');
+                    });
+                    opt.classList.add('selected');
+                    opt.setAttribute('aria-selected', 'true');
+                    label.textContent = opt.textContent;
+
+                    document.querySelectorAll('.' + contentClass).forEach(function (c) {
+                        c.classList.remove('active');
+                    });
+                    const target = document.getElementById(opt.dataset.value);
+                    if (target) target.classList.add('active');
+
+                    select.classList.remove('open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        });
+
+        // Chiudi i dropdown cliccando fuori o con il tasto Esc
+        document.addEventListener('click', function () { closeAllSelects(null); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAllSelects(null); });
     </script>
 </body>
 </html>
