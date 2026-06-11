@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Albi Sailing - Esperienze in Barca a Vela sul Lago di Garda</title>
- <meta property="og:title" content="Albi Sailing Experience">
+    <meta property="og:title" content="Albi Sailing Experience">
     <meta property="og:description" content="Esperienze in barca a vela sul Lago di Garda: relax, natura e team building in un'esperienza esclusiva.">
     <meta property="og:image" content="https://albicristian-byte.github.io/Albi-Sailing/preview.jpg">
     <meta property="og:url" content="https://albicristian-byte.github.io/Albi-Sailing/">
@@ -19,8 +19,6 @@
             --bg-principal: #f4f7fa;
             --text-main: #0f172a;
             --text-muted: #475569;
-            
-            /* Il tipico gradiente Gemini reinterpretato con le sfumature del mare d'estate */
             --gemini-sea-gradient: linear-gradient(135deg, #1a3a5f 0%, #0284c7 40%, #06b6d4 70%, #6366f1 100%);
             --accent-cyan: #06b6d4;
             --accent-blue: #0284c7;
@@ -48,7 +46,6 @@
             overflow-x: hidden;
         }
 
-        /* Sfondo filigrana fisso per Desktop (Posizionato in basso a destra) */
         body::before {
             content: '';
             position: fixed;
@@ -60,12 +57,11 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.12; /* Trasparenza per non disturbare la lettura su desktop */
+            opacity: 0.12;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Navbar in stile Glassmorphism */
         nav {
             position: fixed;
             top: 20px;
@@ -117,7 +113,6 @@
             color: var(--accent-blue);
         }
 
-        /* Hamburger Menu Icon */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -134,7 +129,6 @@
             border-radius: 2px;
         }
 
-        /* Hero Section Ottimizzata con Immagine Emozionale e Parallasse */
         .hero {
             min-height: 95vh;
             padding-top: 150px;
@@ -267,7 +261,6 @@
             margin: 0 auto;
         }
 
-        /* Stile per i testi aggiuntivi */
         .section-intro-text {
             text-align: center;
             max-width: 800px;
@@ -327,11 +320,6 @@
             box-shadow: var(--hover-shadow);
         }
 
-        .gemini-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Copertine fotografiche per le card */
         .card-photo-wrapper {
             width: calc(100% + 64px);
             margin-left: -32px;
@@ -365,7 +353,6 @@
             margin-bottom: 24px;
         }
 
-        /* Se la card ha la foto, l'icona si sovrappone elegantemente in stile badge floating */
         .card-photo-wrapper + .card-icon {
             position: absolute;
             top: 140px;
@@ -394,12 +381,6 @@
 
         .gemini-card:hover .card-icon svg {
             color: var(--accent-cyan);
-            animation: intenseMotion 1.5s ease-in-out infinite;
-        }
-
-        @keyframes intenseMotion {
-            0%, 100% { transform: scale(1.15) translateY(-2px) rotate(-3deg); }
-            50% { transform: scale(1.15) translateY(-6px) rotate(5deg); }
         }
 
         .gemini-card h3 {
@@ -415,49 +396,27 @@
             line-height: 1.6;
         }
 
+        /* Sezione Perché Barca a Vela - Layout Foto Intera Sinistra */
         .objectives-block {
             background: #ffffff;
             border-radius: 32px;
-            padding: 50px;
+            padding: 60px 50px;
             box-shadow: var(--card-shadow);
             border: 1px solid rgba(15, 23, 42, 0.02);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: stretch;
         }
 
-        .objectives-left h3 {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 16px;
-        }
-
-        .objectives-list {
-            list-style: none;
-        }
-
-        .objectives-list li {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 16px;
+        .objectives-left {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .objectives-list li::before {
-            content: "✦"; 
-            color: var(--accent-cyan);
-            font-weight: bold;
+            align-items: center;
         }
 
         .objectives-photo-container {
             width: 100%;
             height: 100%;
-            min-height: 240px;
             overflow: hidden;
             border-radius: 20px;
             box-shadow: var(--card-shadow);
@@ -470,7 +429,64 @@
             display: block;
         }
 
-        /* Menu a Tendina e Struttura Programmi */
+        .objectives-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .objectives-right h3 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .objectives-subtitle {
+            color: var(--text-muted);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            display: block;
+        }
+
+        .list-section-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: block;
+            border-left: 3px solid var(--accent-cyan);
+            padding-left: 10px;
+        }
+
+        .objectives-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .objectives-list + .objectives-list {
+            margin-top: 10px;
+        }
+
+        .objectives-list li {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .objectives-list li::before {
+            content: "✦"; 
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
         .dropdown-container {
             text-align: center;
             margin-bottom: 50px;
@@ -500,11 +516,6 @@
             transition: all 0.3s ease;
         }
 
-        .dropdown-select:hover, .dropdown-select:focus {
-            border-color: var(--accent-blue);
-            box-shadow: var(--hover-shadow);
-        }
-
         .dropdown-wrapper::after {
             content: "";
             position: absolute;
@@ -517,7 +528,6 @@
             border-right: 6px solid transparent;
             border-top: 6px solid var(--text-muted);
             pointer-events: none;
-            transition: transform 0.3s ease;
         }
 
         .program-team-content, .program-relax-content {
@@ -657,32 +667,19 @@
             gap: 16px;
         }
 
-        /* MEDIA QUERY: OTTIMIZZAZIONE SMARTPHONE */
         @media (max-width: 768px) {
-            
-            /* Sfondo fisso ottimizzato per Mobile: centrato in orizzontale sotto i testi */
             body::before {
                 width: 300px;
                 height: 300px;
-                bottom: 8%;       /* Posizionato nella fascia medio-bassa dello schermo dello smartphone */
-                left: 50%;        /* Centra l'elemento rispetto al bordo sinistro */
-                right: auto;      /* Resetta il posizionamento desktop a destra */
-                transform: translateX(-50%); /* Centra l'immagine perfettamente sull'asse orizzontale */
-                opacity: 0.08;    /* Opacità ridotta all'8% per una leggibilità del testo mobile impeccabile */
+                bottom: 8%;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0.08;
             }
 
-            nav {
-                padding: 12px 20px;
-            }
-
-            .nav-logo {
-                height: 50px; 
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
+            nav { padding: 12px 20px; }
+            .nav-logo { height: 50px; }
+            .hamburger { display: flex; }
             .nav-links {
                 position: absolute;
                 top: 80px;
@@ -693,118 +690,26 @@
                 align-items: center;
                 padding: 24px 0;
                 border-radius: 16px;
-                box-shadow: 0 10px 40px rgba(15, 23, 42, 0.1);
-                border: 1px solid rgba(15, 23, 42, 0.05);
-                opacity: 0;
                 visibility: hidden;
+                opacity: 0;
                 transform: translateY(-15px);
                 transition: all 0.3s ease;
             }
-
             .nav-links.active {
-                opacity: 1;
                 visibility: visible;
+                opacity: 1;
                 transform: translateY(0);
             }
 
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 12px 0;
-                font-size: 16px;
-            }
-
-            .hero {
-                min-height: auto;
-                padding-top: 140px;
-                padding-bottom: 40px;
-                background-attachment: scroll;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-                letter-spacing: -1px;
-                margin-bottom: 20px;
-            }
-
-            .hero p {
-                font-size: 16px;
-                margin-bottom: 30px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            section {
-                padding: 60px 16px;
-            }
-
-            .section-header {
-                margin-bottom: 40px;
-            }
-
-            .section-header h2 {
-                font-size: 28px;
-            }
-
-            .section-intro-text, .section-quote-text {
-                margin: -15px auto 30px auto;
-                font-size: 15px;
-            }
-
-            .card-photo-wrapper {
-                height: 160px;
-            }
+            .hero h1 { font-size: 36px; }
+            .hero-buttons { flex-direction: column; }
 
             .objectives-block {
+                grid-template-columns: 1fr;
                 padding: 30px 24px;
-                border-radius: 20px;
+                gap: 30px;
             }
-
-            .objectives-left h3 {
-                font-size: 24px;
-            }
-
-            .timeline-modern {
-                padding-left: 20px;
-            }
-
-            .timeline-modern::before {
-                left: 0;
-            }
-
-            .timeline-row::before {
-                left: -25px;
-                width: 12px;
-                height: 12px;
-                top: 8px;
-            }
-
-            footer {
-                padding: 60px 16px 30px 16px;
-                margin-top: 60px;
-            }
-
-            .footer-grid {
-                gap: 32px;
-            }
-            
-            .copyright-area {
-                flex-direction: column;
-                text-align: center;
-                justify-content: center;
-            }
+            .objectives-photo-container { height: 250px; }
         }
     </style>
 </head>
@@ -854,7 +759,7 @@
         <div class="grid-cards">
             <div class="gemini-card">
                 <div class="card-photo-wrapper">
-                    <img src="relax.jpg" alt="Aperitivo al tramonto Albi Sailing">
+                    <img src="relax.jpg" alt="Aperitivo e relax Albi Sailing">
                 </div>
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24">
@@ -862,7 +767,7 @@
                         <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                     </svg>
                 </div>
-                <h3>Aperitivo al tramonto</h3>
+                <h3>Aperitivo e relax</h3>
                 <p>Goditi il tramonto dorato dal centro del lago, sorseggiando un calice di vino locale cullato dal dolce movimento delle onde estive.</p>
             </div>
             <div class="gemini-card">
@@ -905,9 +810,9 @@
         <div class="dropdown-container">
             <div class="dropdown-wrapper">
                 <select id="program-relax-select" class="dropdown-select" onchange="switchProgramRelax()">
-                    <option value="relax-sunset">Aperitivo al Tramonto (Pomeriggio)</option>
+                    <option value="relax-sunset">Aperitivo e Relax (Pomeriggio)</option>
                     <option value="relax-slow-cruise">Slow Cruise (Giornata Intera)</option>
-                    <option value="relax-notturna">Uscita Notturna (Sotto le stelle)</option>
+                    <option value="relax-serale">Uscita Serale (Sotto le stelle)</option>
                 </select>
             </div>
         </div>
@@ -926,8 +831,8 @@
                 </div>
                 <div class="timeline-row">
                     <span class="time-tag">18:30</span>
-                    <h4>Veleggiata al crepuscolo e Aperitivo gourmet</h4>
-                    <p>Le luci iniziano a cambiare. Veleggiamo verso i punti più panoramici mentre viene servito un ricco aperitivo con prodotti tipici.</p>
+                    <h4>Veleggiata al crepuscolo e Aperitivo</h4>
+                    <p>Le luci iniziano a cambiare. Veleggiamo verso i punti più panoramici mentre viene servito un aperitivo con prodotti tipici.</p>
                 </div>
                 <div class="timeline-row">
                     <span class="time-tag">19:30</span>
@@ -952,7 +857,7 @@
                 <div class="timeline-row">
                     <span class="time-tag">13:00</span>
                     <h4>Pranzo in riva al lago</h4>
-                    <p>Sosta ormeggiati nei pressi di un borgo caratteristico per un pranzo esclusivo in un ristorante convenzionato o light lunch a bordo.</p>
+                    <p>Sosta ormeggiati nei pressi di un borgo caratteristico per un pranzo economico in un ristorante convenzionato o light lunch a bordo.</p>
                 </div>
                 <div class="timeline-row">
                     <span class="time-tag">15:00</span>
@@ -967,12 +872,12 @@
             </div>
         </div>
 
-        <div id="relax-notturna" class="program-relax-content">
+        <div id="relax-serale" class="program-relax-content">
             <div class="timeline-modern">
                 <div class="timeline-row">
                     <span class="time-tag">20:30</span>
                     <h4>Ritrovo al crepuscolo e imbarco</h4>
-                    <p>Benvenuto a bordo al calare della sera, sistemazione e introduzione alla suggestiva atmosfera notturna del lago.</p>
+                    <p>Benvenuto a bordo al calare della sera, sistemazione e introduzione alla suggestiva atmosfera serale del lago.</p>
                 </div>
                 <div class="timeline-row">
                     <span class="time-tag">21:00</span>
@@ -1021,7 +926,7 @@
                         <path d="M12 2v5M12 17v5M2 12h5M17 12h5M4.93 4.93l3.54 3.54M15.54 15.54l3.54 3.54M4.93 19.07l3.54-3.54M15.54 8.46l3.54-3.54"/>
                     </svg>
                 </div>
-                <h3>Skipper & Leadership</h3>
+                <h3>Skipper e Leadership</h3>
                 <p>La guida strategica nei momenti di bonaccia o di tempesta. Allena l'ascolto e la prontezza nel problem solving.</p>
             </div>
             <div class="gemini-card">
@@ -1034,7 +939,7 @@
                         <circle cx="12" cy="12" r="2"/>
                     </svg>
                 </div>
-                <h3>Rotta & Obiettivo comune</h3>
+                <h3>Rotta e Obiettivo comune</h3>
                 <p>Impostare le vele significa pianificare. Il traguardo è chiaro, ma la flessibilità per raggiungerlo fa la differenza.</p>
             </div>
             <div class="gemini-card">
@@ -1055,20 +960,31 @@
     <section id="obiettivi">
         <div class="objectives-block">
             <div class="objectives-left">
-                <h3>Cosa <span class="gradient-text">generiamo</span> a bordo</h3>
-                <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 24px;">Un'esperienza immersiva pensata per abbattere le barriere comunicative e stimolare il potenziale latente del team.</p>
                 <div class="objectives-photo-container">
                     <img src="dettaglio.jpg" alt="Dettaglio Vela Albi Sailing Formazione">
                 </div>
             </div>
-            <div>
+
+            <div class="objectives-right">
+                <h3>Perché la <span class="gradient-text">barca a vela</span></h3>
+                <span class="objectives-subtitle">Analogie con la vita aziendale ed obiettivi del Team Building</span>
+                
+                <span class="list-section-title">Le analogie aziendali:</span>
                 <ul class="objectives-list">
-                    <li>Fiducia reciproca assoluta tra i colleghi.</li>
-                    <li>Sviluppare abilità organizzative in contesti mutevoli.</li>
-                    <li>Rafforzare lo spirito di corpo divertendosi insieme.</li>
-                    <li>Consolidare e rafforzare i rapporti tra i componenti del team.</li>
-                    <li>Creare affiatamento e piacere di stare insieme.</li>
-		    <li>Riconoscere l'errore come opportunità di correzione di rotta.</li>
+                    <li><strong>Equipaggio</strong> come Team Aziendale</li>
+                    <li><strong>Skipper</strong> come Team Leader</li>
+                    <li><strong>Rotta</strong> come Strategia Aziendale</li>
+                    <li><strong>Destinazione</strong> come Obiettivo "Focal Point"</li>
+                    <li><strong>Mare Aperto</strong> come Mercato</li>
+                    <li><strong>Vento</strong> come Opportunità o Rischio da valutare</li>
+                </ul>
+
+                <span class="list-section-title">Obiettivi del Team Building:</span>
+                <ul class="objectives-list">
+                    <li>Clima di <strong>fiducia</strong> e valorizzazione delle specificità</li>
+                    <li>Sviluppare un sistema di <strong>competenze</strong> personali ed organizzative</li>
+                    <li><strong>Consolidare</strong> e <strong>rafforzare</strong> i rapporti tra i componenti del team</li>
+                    <li>Creare <strong>affiatamento</strong> e piacere di stare insieme</li>
                 </ul>
             </div>
         </div>
@@ -1085,7 +1001,6 @@
                 <select id="program-team-select" class="dropdown-select" onchange="switchProgramTeam()">
                     <option value="team-giornata-intera">Giornata Intera</option>
                     <option value="team-mezza-giornata">Mezza Giornata</option>
-                    <option value="team-uscita-notturna">Uscita Notturna</option>
                 </select>
             </div>
         </div>
@@ -1141,26 +1056,6 @@
                     <span class="time-tag">19:00</span>
                     <h4>Rientro e debriefing di squadra</h4>
                     <p>Rientro in porto e sessione di debriefing mirata per focalizzare i punti di forza emersi durante le manovre.</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="team-uscita-notturna" class="program-team-content">
-            <div class="timeline-modern">
-                <div class="timeline-row">
-                    <span class="time-tag">20:30</span>
-                    <h4>Briefing al crepuscolo e ruoli</h4>
-                    <p>Accoglienza al tramonto, preparazione teorica rigorosa alla navigazione notturna e regole di sicurezza.</p>
-                </div>
-                <div class="timeline-row">
-                    <span class="time-tag">21:00</span>
-                    <h4>Uscita al buio e navigazione sensoriale</h4>
-                    <p>Navigazione emozionante sotto le stelle, focalizzata sulla fiducia totale reciproca e sull'ascolto dei sensi senza punti di riferimento visivi.</p>
-                </div>
-                <div class="timeline-row">
-                    <span class="time-tag">22:45</span>
-                    <h4>Cena a terra sul lago e debriefing</h4>
-                    <p>Una cena esclusiva a terra per condividere i traguardi vissuti e consolidare lo spirito di corpo di fronte al lago.</p>
                 </div>
             </div>
         </div>
